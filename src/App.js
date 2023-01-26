@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import {Route, Routes} from "react-router-dom"
+
+import HomePage from "./Pages/"
+import Navbar from './components/Navbar';
+import About from "./Pages/About"
+import Menu from "./Pages/Menu"
+import Cart from './Pages/Cart';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <Navbar />
+
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </div>
   );
 }
 
 export default App;
+
+
+/* 
+
+-- Menu --
+  - Open and close different category independently
+  - Filter for main ingredient, allergies etc
+
+-- CSS -- 
+ - Styling
+
+
+*/
