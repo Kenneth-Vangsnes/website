@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import MenuElement from "../components/MenuElement";
 import { Context } from "../Context";
 import Button from "../components/ButtonElement"
@@ -9,11 +9,22 @@ export default function Menu() {
         menu, 
         filteredMenu, 
         chosenFilters, 
-        setFilteredMenu, 
-        setChosenFilters, 
         setShowAllergens,
         showAllergens,
     } = useContext(Context)
+    const [typesOfDish, setTypeOfDish] = useState([])
+
+    useEffect(() => {
+            setTypeOfDish(() => {const arrayOfType = []
+            menu.map(element => arrayOfType.push(element.type))
+            function onlyUnique(value, index, self) {
+                return self.indexOf(value) === index
+            }
+            const uniqueTypeOfDish = arrayOfType.filter(onlyUnique)
+            return uniqueTypeOfDish
+            })
+    }, [])
+    console.log(typesOfDish)
     
     function toggleSliderForAllergens() {
         if(showAllergens) {
@@ -23,15 +34,17 @@ export default function Menu() {
         }
     }
 
+    const buttonElement = 
+        typesOfDish.map(typeOfDish => {
+            return <Button props={{type: typeOfDish, name: typeOfDish}} />
+        })
+    
+
     return (
         <main className="menu">
             <h1>Menu</h1>
-            <Button props={{type: "soup", name: "Soup"}}/>
-            <Button props={{ingredient: "beef", name: "Beef"}}/>
-            <Button props={{name: "Reset"}}
-                    onClick={() => (setFilteredMenu(menu), setChosenFilters([]))}
-                    />
-            
+            {buttonElement}
+            <button onClick={() => window.location.reload(true)}>Reset</button>
             <br />
             {chosenFilters.join(", ")}
             {toggleSliderForAllergens()}
