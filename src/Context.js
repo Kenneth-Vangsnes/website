@@ -1,16 +1,26 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {food} from "./data/data"
 
 const Context = React.createContext()
 
 function ContextProvider({children}) {
-    const [cartItems, setCartItems] = useState([])
+    const [cartItems, setCartItems] = useState(() => {
+        const savedCart = localStorage.getItem("cart")
+        const initialValue = JSON.parse(savedCart)
+        return initialValue || []
+    })
     const [isMenuOpen, setIsMenuOpen] = useState(true)
     const [menu, setMenu] = useState(food)
     const [filteredMenu, setFilteredMenu] = useState([])
     const [chosenFilters, setChosenFilters] = useState([])
     const [showAllergens, setShowAllergens] = useState(false)
 
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cartItems))
+    }, [cartItems])
+
+
+ 
     function openMenu () {
         setIsMenuOpen(prevState => !prevState)
     }
