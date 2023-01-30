@@ -2,37 +2,34 @@ body {
   background-color: #d4af37;
   display: flex;
   justify-content: center;
-  width: 100%;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
 }
 
 .App {
   text-align: center;
-  display: inline;
-  width: auto;
-}
-
-
-header {
-  background-color: #d4af37 ;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  padding-top: 1rem;
+  min-width: 750px;
+  max-width: 750px;
 }
 
 .navbar {
-  display: flex;
+  display: flex ;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   width: 100%;
   top: 0;
+  margin-top: 1rem;
 }
 
 .navbar--links {
   list-style-type: none;
   display: flex;
-  justify-content: space-around;
   padding: 0;
 }
 
@@ -45,7 +42,7 @@ header {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  width: 5rem;
+  width: auto;
 }
 
 .homepage, .about, .cart .menu {
@@ -54,9 +51,18 @@ header {
 
 .menuelement {
   display: flex;
-  justify-content: space-around;
   align-items: center;
   max-width: 300rem;
+  height: 1.7rem;
+}
+
+.menuelement--allergens {
+  margin-left: 1rem;
+  font-size: 0.6rem;
+}
+
+.menuelement--allergens:hover {
+  font-size: 1.4rem;
 }
 
 .menuelement--name {
@@ -64,16 +70,48 @@ header {
 }
 .menuelement--price {
   font-size: 1rem;
+  margin-right: 0;
+  margin-left: auto;
 }
 
-.icon:hover {
+.menuelement--icon {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+.icon:hover, .menuelement--icon:hover, button:hover {
   cursor: pointer;
 }
 
+/* CartElements */
+
 .cartelement {
-  display: flex;
-  justify-content: space-between;
+  display: inline-grid;
+  grid-template-columns: 1fr 2rem 2rem 6rem 1rem;
+  font-size: 1.2rem;
   align-items: center;
-  width: 300px;
-  
+  width: 40rem;
+  margin:0 5rem 0 5rem ;
 }
+
+.cartelement--name {
+  text-align: left;
+}
+
+.cartelement--price {
+  margin-left: auto;
+}
+
+.cartelement--remove {
+  margin-left: 1rem;
+}
+
+button {
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  height: 1.4rem;
+  margin: 10px 5px 10px 5px;
+  padding: 4px;
+}
+
