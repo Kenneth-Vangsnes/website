@@ -9,6 +9,7 @@ function ContextProvider({children}) {
     const [menu, setMenu] = useState(food)
     const [filteredMenu, setFilteredMenu] = useState([])
     const [chosenFilters, setChosenFilters] = useState([])
+    const [showAllergens, setShowAllergens] = useState(false)
 
     function openMenu () {
         setIsMenuOpen(prevState => !prevState)
@@ -72,6 +73,8 @@ function ContextProvider({children}) {
                 menu,
                 filteredMenu,
                 chosenFilters,
+                showAllergens,
+                setShowAllergens,
                 setChosenFilters,
                 setFilteredMenu,
                 addServing,
