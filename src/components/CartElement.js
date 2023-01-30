@@ -9,11 +9,11 @@ export default function CartElement({item}) {
 
     return (
         <div className="cartelement">
-            {item.name} 
+            <span className="cartelement--name">{item.name} </span>
             <BsCartPlus onClick={() => addServing(item)} className="icon"/>
             <BsCartDash onClick={() => removeServing(item)} className="icon"/>
-            {item.servings} x {price} kr
-            <BsCartX onClick={() => removeFromCart(item.id)} className="icon"/>
+            <span className="cartelement--price">{item.servings} x {price} kr</span>
+            <BsCartX onClick={() => removeFromCart(item.id)} className="icon cartelement--remove"/>
         </div>
     )
 }
