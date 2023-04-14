@@ -3,9 +3,9 @@ import React from "react";
 export default function HomePage() {
     return (
         <div className="homepage">
-            <h1>Welcome to Golden House</h1>
-            <h2>Chinese Food</h2>
-            <h2>Take Away</h2>
+            <div className="homepage--type">CHINESE FOOD</div>
+            <div className="homepage--name">Golden House</div>
+            <div className="homepage--service">Take Away</div>
             <p>We are located in Heigreveien</p>
             <p>Foren 2, across Helgø/Meny at Stangeland/Sandved</p>
             <iframe 
