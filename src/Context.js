@@ -18,8 +18,6 @@ function ContextProvider({children}) {
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cartItems))
     }, [cartItems])
-
-
  
     function openMenu () {
         setIsMenuOpen(prevState => !prevState)

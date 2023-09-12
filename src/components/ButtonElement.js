@@ -1,12 +1,25 @@
-import React, {useState, useContext} from "react"
+import React, {useState, useContext, useEffect} from "react"
 import { Context } from "../Context"
 
 export default function Button(props) {
     const [open, setOpen] = useState(false)
+    const [allergensInDishes, setAllergensInDishes] = useState([])
     const {menu, filteredMenu, setFilteredMenu, setChosenFilters} = useContext(Context)
     const property = props.props
-    const styles = {backgroundColor: open ? "green" : "gold"}
+    
+    useEffect(() => {
+        setAllergensInDishes()
+    }, [filteredMenu])
+    
+    function chooseTypeOfDish(property) {
+        const sortedMenu = menu
+        if(property.hasOwnProperty("type") === true) {
+            const filtered = sortedMenu.filter(item => item.type === property.type)
+            setFilteredMenu(filtered)
+        }
+    }
 
+    /* 
     function menuFiltering(property) {
         const sortedMenu = filteredMenu.length === 0 ? menu : filteredMenu
         if(property.hasOwnProperty("type") === true) {
@@ -24,13 +37,12 @@ export default function Button(props) {
             setChosenFilters(prevValues => [...prevValues, property.allergens])
         } 
         setOpen(oldState => !oldState)
-    }
+    } */
 
     return (
         <button
-            style={styles}
-            onClick={() => menuFiltering(property)}
-            disabled={open}
+            className="buttonElement"
+            onClick={() => chooseTypeOfDish(property)}
         >
             {property.name}
         </button>

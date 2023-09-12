@@ -15,17 +15,17 @@ export default function Menu() {
     const [typesOfDish, setTypeOfDish] = useState([])
 
     useEffect(() => {
-            setTypeOfDish(() => {const arrayOfType = []
-            menu.map(element => arrayOfType.push(element.type))
-            function onlyUnique(value, index, self) {
+            setTypeOfDish(() => {
+                const arrayOfType = []
+                menu.map(element => arrayOfType.push(element.type))
+                function onlyUnique(value, index, self) {
                 return self.indexOf(value) === index
             }
             const uniqueTypeOfDish = arrayOfType.filter(onlyUnique)
             return uniqueTypeOfDish
             })
     }, [])
-    console.log(typesOfDish)
-    
+
     function toggleSliderForAllergens() {
         if(showAllergens) {
             return <span className="showAllergens" onClick={() => setShowAllergens(false)}><BsToggleOn />Show Allergens</span>
@@ -36,7 +36,7 @@ export default function Menu() {
 
     const buttonElement = 
         typesOfDish.map(typeOfDish => {
-            return <Button props={{type: typeOfDish, name: typeOfDish}} />
+            return <Button key={typeOfDish} props={{type: typeOfDish, name: typeOfDish}} />
         })
     
 
@@ -44,6 +44,7 @@ export default function Menu() {
         <main className="menu">
             <h1>Menu</h1>
             {buttonElement}
+            <br />
             <button onClick={() => window.location.reload(true)}>Reset</button>
             <br />
             {chosenFilters.join(", ")}

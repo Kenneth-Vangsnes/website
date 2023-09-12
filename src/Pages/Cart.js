@@ -8,24 +8,20 @@ export default function Cart() {
 
      const cartItemElement = cartItems.map(item => {
         return (
-            <CartElement item={item}/>
+            <CartElement key={item.id} item={item}/>
         )
     })
 
     useEffect(() => {
         const array = []
         cartItems.map(item => array.push(item.price * item.servings))
-        const initialValue = 0;
-        const sumWithInitial = array.reduce(
-            (accumulator, currentValue) => accumulator + currentValue,
-        initialValue)
-        setTotalAmount(sumWithInitial)
+        const sumArray = array.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+        setTotalAmount(sumArray)
     }, [cartItems])
     
     return (
         <div className="cart">
             <h2>Check Out</h2>
-
             {cartItemElement}
             <hr />
             <p>Total: {totalAmount} kr </p>

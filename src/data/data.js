@@ -54,7 +54,8 @@ export const food = [
     "id": 6,
     "ingredient": ["shellfish"],
     "price": 60, 
-    "type": "appetizer"
+    "type": "appetizer", 
+    "servings": 1
 },
 {
     "name": "Deepfried Crab",
@@ -192,6 +193,24 @@ export const food = [
     "ingredient": ["beef"],
     "price": 139,
     "type": "main",
+    "servings": 1
+},
+{
+    "name": "Chicken Nuggets with fries",
+    "allergens": ["gluten"],
+    "id": 95,
+    "ingredient": ["chicken"],
+    "price": 65,
+    "type": "childrens menu",
+    "servings": 1
+},
+{
+    "name": "Fried ricenoodles with beef",
+    "allergens": ["gluten", "soy", "sesameseed", "fishsauce", "egg"],
+    "id": 122,
+    "ingredient": ["beef"],
+    "price": 119,
+    "type": "lunch",
     "servings": 1
 },
 ]
